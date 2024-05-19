@@ -1,4 +1,4 @@
-# Liquidity Pool State Analyzer
+# Liquidity Pool State
 
 The CPMM Liquidity Pool State is a Python library that provides tools for analyzing the state of raydium liquidity pools in solana blockchain. This library allows users to fetch, parse, and analyze various aspects of liquidity pool states, including configuration details, token vaults, LP minting, fees, and observations.
 
