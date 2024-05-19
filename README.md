@@ -12,7 +12,7 @@ The CPMM Liquidity Pool State is a Python library that provides tools for analyz
 
 ## Usage
 
-Here's a basic example demonstrating how to use the library to analyze a liquidity pool's state:
+Here's a basic example demonstrating how to use the library to fetch a liquidity pool's state:
 
 ```python
 from solana.rpc.api import Client
