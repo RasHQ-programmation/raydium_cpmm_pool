@@ -22,7 +22,7 @@ from src.state import PoolState
 client = Client("https://api.mainnet-beta.solana.com")
 lp_address = "7JuwJuNU88gurFnyWeiyGKbFmExMWcmRZntn9imEzdny" #USING SOL / USDC
 
-pool_state = PoolState(pool_state_address, client)
+pool_state = PoolState(lp_address, client)
 
 # Access pool state attributes and methods
 print("Token 0 vault address:", pool_state.token_0_vault)
