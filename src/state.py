@@ -1,23 +1,6 @@
 from solders.pubkey import Pubkey
 from utils.layout import POOL_STATE_LAYOUT, AMM_CONFIG_LAYOUT, OBSERVATION_STATE
 
-# Enum for PoolStatusBitIndex
-class PoolStatusBitIndex:
-    Deposit = 0
-    Withdraw = 1
-    Swap = 2
-
-# Enum for PoolStatusBitFlag
-class PoolStatusBitFlag:
-    Enable = 0
-    Disable = 1
-
-# Constants
-POOL_SEED = "pool"
-POOL_LP_MINT_SEED = "pool_lp_mint"
-POOL_VAULT_SEED = "pool_vault"
-Q32 = (2 ** 32)
-
 class PoolState:
     """
     PoolState class represents the state of a liquidity pool in a decentralized exchange (DEX) environment. 
@@ -56,7 +39,7 @@ class PoolState:
         observations (dict): Observations data.
     """
 
-    def __init__(self, pool_state_address, client):
+    def __init__(self, pool_state_address : str, client):
         self.client = client
         self.pool_state = Pubkey.from_string(pool_state_address)
         self.data = self.get_pool_state()
@@ -87,7 +70,7 @@ class PoolState:
         # Initialize AMM CFG
         self.amm_cfg = self.get_amm_cfg()
 
-        #Get oracle price
+        #Fetch cumulative price oracle
         self.observations = self.get_observations()
 
         #Calculate vault amout and vault amount without fees
@@ -148,7 +131,6 @@ class PoolState:
             "pool_id": Pubkey.from_bytes(parsed_data.poolId),
             "observations": []
         }
-        print(parsed_data.observations)
         # Convert observations to dictionary format
         for obs in parsed_data.observations:
             obs_dict = {
@@ -183,12 +165,4 @@ class PoolState:
         return (
             self.vault_0_amount - (self.protocol_fees_token_0 + self.fund_fees_token_0),
             self.vault_1_amount - (self.protocol_fees_token_1 + self.fund_fees_token_1)
-        )
-
-    def token_price_x32(self):
-        # Calculate token prices
-        token_0_amount, token_1_amount = self.vault_amount_without_fee()
-        return (
-            (token_1_amount * Q32) // token_0_amount,
-            (token_0_amount * Q32) // token_1_amount
         )
