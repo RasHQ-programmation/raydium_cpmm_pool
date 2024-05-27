@@ -7,7 +7,6 @@ def calculate_min_output(pool_state : PoolState, balance_ui, side, slippage_tole
     Calculate the minimum output amount based on the input balance and current price from the pool.
 
     Args:
-    - client: The client object for interacting with the blockchain.
     - pool_state: The state of the liquidity pool.
     - balance_ui: The input balance in user interface units (e.g., USDC, SOL).
     - slippage_tolerance: The percentage of slippage tolerance, default is 5%.
