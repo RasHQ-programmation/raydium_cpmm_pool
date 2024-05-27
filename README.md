@@ -25,15 +25,15 @@ lp_address = "7JuwJuNU88gurFnyWeiyGKbFmExMWcmRZntn9imEzdny" #USING SOL / USDC
 
 pool_state = PoolState(pool_state_address, client)
 
-# Access pool state attributes and methods
-print("Token 0 vault address:", pool_state.token_0_vault)
-print("Token 1 vault address:", pool_state.token_1_vault)
-
-# Get token prices
-token_0_price, token_1_price = pool_state.token_price_x32()
-print("Token 0 price:", token_0_price)
-print("Token 1 price:", token_1_price)
+# Print relevant pool state information
+print("Pool Data:", pool_state.data)
+print("AMM Configuration:", pool_state.amm_cfg)
+print("Observations Index:", pool_state.observations['observation_index'])
+print("Observations:", pool_state.observations['observations'][:2])
+print("Vault Amount:", pool_state.vault_amout)
+print("Vault Amount Without Fees:", pool_state.vault_amount_without_fees)
 ```
+
 ## Contributing
 Contributions to the Liquidity Pool State are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
 
